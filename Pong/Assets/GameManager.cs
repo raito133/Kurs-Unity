@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
         else
             playerTwoScore++;
         Debug.Log(playerOneScore + " " + playerTwoScore);
+        playerOnePaddle.GetComponent<Paddle>().ResetPosition();
+        playerTwoPaddle.GetComponent<Paddle>().ResetPosition();
     }
 
 

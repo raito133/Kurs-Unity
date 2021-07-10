@@ -10,11 +10,19 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     bool isPlayer1 = true;
 
+    Vector2 startingPosition;
+
     Rigidbody2D rigidbody;
     // Start is called before the first frame update
     void Start()
     {
+        startingPosition = transform.position;
         rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = startingPosition;
     }
 
     // Update is called once per frame

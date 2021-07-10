@@ -34,7 +34,7 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.tag == "Edge")
         {
             transform.position = startingPosition;
-            rigidbody.velocity = new Vector2(5, 5);
+            rigidbody.velocity = new Vector2(RandomVelocity(), RandomVelocity());
         }
     }
 }
