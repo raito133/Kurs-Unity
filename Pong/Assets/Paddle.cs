@@ -10,6 +10,11 @@ public class Paddle : MonoBehaviour
     [SerializeField]
     bool isPlayer1 = true;
 
+    [SerializeField]
+    bool isHuman = true;
+
+    float timer = 0.0f;
+
     Vector2 startingPosition;
 
     Rigidbody2D rigidbody;
@@ -28,16 +33,40 @@ public class Paddle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayer1)
+        timer += Time.deltaTime;
+        if(isHuman)
         {
-            this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
-            Input.GetAxisRaw("Vertical") * speed);
+            if (isPlayer1)
+            {
+                this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
+                Input.GetAxisRaw("Vertical") * speed);
+            }
+            else
+            {
+                this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
+                Input.GetAxisRaw("Vertical2") * speed);
+            }
         }
-        else
+        else if(timer < 2.0f)
         {
-            this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
-            Input.GetAxisRaw("Vertical2") * speed);
+            Vector2 ballPosition = GameObject.FindGameObjectWithTag("Ball").transform.position;
+            if (ballPosition.y > transform.position.y)
+            {
+                this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
+                1 * speed);
+            }
+            else if (ballPosition.y < transform.position.y)
+            {
+                this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
+                -1 * speed);
+            }
+            else
+            {
+                this.rigidbody.velocity = new Vector2(rigidbody.velocity.x,
+                0);
+            }
         }
-        
+        if (timer >= 4.0f)
+            timer = 0.0f;
     }
 }
