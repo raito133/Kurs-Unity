@@ -5,6 +5,7 @@ using UnityEngine;
 public class Alien : MonoBehaviour
 {
     int speed = 1;
+    int health = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,13 @@ public class Alien : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             transform.position = new Vector2(-4, transform.position.y - 1);
+        }
+        if(collision.gameObject.tag == "Bullet")
+        {
+            ///odjêcie zdrowia, sprawdzenie zdrowia i usuniêcie
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+            
         }
         Debug.Log("Wall hit");
     }
