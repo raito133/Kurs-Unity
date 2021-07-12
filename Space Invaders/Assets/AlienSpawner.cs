@@ -14,14 +14,17 @@ public class AlienSpawner : MonoBehaviour
 
     public void SpawnAliens()
     {
+        int numberOfAliens = 0;
         // Tworzenie przeciwników w kolumnach
         for (int column = -2; column < 2; column++)
         {
             for (int row = 4; row > 1; row--)
             {
                 aliens.Add(Instantiate(alienPrefab, new Vector3(column, row, 0), Quaternion.identity));
+                numberOfAliens++;
             }
         }
+        Alien.Count = numberOfAliens;
     }
 
     public void DestroyAliens()
@@ -36,6 +39,6 @@ public class AlienSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

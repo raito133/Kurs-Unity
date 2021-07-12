@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
-    int speed = 5;
+    static int counter = 0;
+    public static int Count { get; set; }
+    int speed = 1;
     int health = 1;
     int startingHealth = 1;
     GameManager gameManager;
@@ -48,7 +50,15 @@ public class Alien : MonoBehaviour
                 Destroy(this.gameObject); // usuniêcie kosmity
                                           // w przypadku zdrowia równego 0
                 gameManager.IncreaseScore(startingHealth); // zdrowie kosmity 3 
-                                             // doda³o 3 punkty
+                                                           // doda³o 3 punkty
+                counter++;
+                if (counter == Count)
+                {
+                    GameObject
+                        .FindGameObjectWithTag("GameManager")
+                        .GetComponent<GameManager>()
+                        .ResetGame();
+                }
 
             }
             Destroy(collision.gameObject); // usuniêcie pocisku
