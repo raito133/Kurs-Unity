@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Text text;
     [SerializeField] GameObject spaceShipPrefab;
-    Vector3 shipStartingPosition = new Vector3 (0, -4, 0);
+    [SerializeField] Transform shipStartingPosition;
     int score = 0;
 
     private void Start()
     {
-        Instantiate(spaceShipPrefab, shipStartingPosition, Quaternion.identity);
+        Instantiate(spaceShipPrefab, shipStartingPosition.position, Quaternion.identity);
     }
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         // Resetowanie statku
-        Instantiate(spaceShipPrefab, shipStartingPosition, Quaternion.identity);
+        Instantiate(spaceShipPrefab, shipStartingPosition.position, Quaternion.identity);
         // Resetowanie kosmitów
         // Usuniêcie pocisków
     }
