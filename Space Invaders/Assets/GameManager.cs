@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text text;
     [SerializeField] GameObject spaceShipPrefab;
     [SerializeField] Transform shipStartingPosition;
+    [SerializeField] AlienSpawner alienSpawner;
     int score = 0;
 
     private void Start()
@@ -27,6 +28,12 @@ public class GameManager : MonoBehaviour
         // Resetowanie statku
         Instantiate(spaceShipPrefab, shipStartingPosition.position, Quaternion.identity);
         // Resetowanie kosmitów
+        alienSpawner.DestroyAliens();
+        alienSpawner.SpawnAliens();
         // Usuniêcie pocisków
+        foreach(GameObject bullet in GameObject.FindGameObjectsWithTag("Bullet"))
+        {
+            Destroy(bullet);
+        }
     }
 }

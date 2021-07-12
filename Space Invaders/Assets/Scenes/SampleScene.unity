@@ -644,6 +644,7 @@ MonoBehaviour:
   text: {fileID: 1484228005}
   spaceShipPrefab: {fileID: 6917924965854607161, guid: 506b71e2547a2374ebd7b7d5df0156a4, type: 3}
   shipStartingPosition: {fileID: 1797580946}
+  alienSpawner: {fileID: 668098122}
 --- !u!4 &938803194
 Transform:
   m_ObjectHideFlags: 0
