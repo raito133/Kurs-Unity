@@ -43,6 +43,10 @@ public class Spaceship : MonoBehaviour
         if(collision.gameObject.tag == "Alien")
         {
             Destroy(this.gameObject);
+            GameObject
+                .FindGameObjectWithTag("GameManager")
+                .GetComponent<GameManager>()
+                .ResetGame();
         }
     }
 
