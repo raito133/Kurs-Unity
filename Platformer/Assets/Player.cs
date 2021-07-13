@@ -63,6 +63,8 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
         }
+        if (collision.gameObject.tag == "Enemy")
+            Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
         {
             appleCount++;
             gameManager.SetAppleScore(appleCount);
+            GetComponent<AudioSource>().Play();
             Destroy(collision.gameObject);
         }
     }
