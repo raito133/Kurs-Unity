@@ -12,12 +12,15 @@ public class Player : MonoBehaviour
     bool isJumping;
     bool isRunning;
     bool isFalling;
+    int appleCount = 0;
+    GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -65,6 +68,10 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Fruit")
+        {
+            appleCount++;
+            gameManager.SetAppleScore(appleCount);
             Destroy(collision.gameObject);
+        }
     }
 }
