@@ -9,6 +9,7 @@ public class Player : Character
     {
         rigidbody = GetComponent<Rigidbody2D>();
         pokemons.Add(new Pokemon("Charmander", PokemonType.FIRE, 100));
+        pokemons.Add(new Pokemon("Pikikiki", PokemonType.GROUND, 87));
         currentPokemon = pokemons[0];
     }
 

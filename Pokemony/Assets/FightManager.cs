@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class FightManager : MonoBehaviour
 {
     Player player;
+    Pokemon currentFightingPokemon;
     Enemy enemy;
     [SerializeField] TMP_Text prompt;
     [SerializeField] TMP_Text playerPokemonNameText;
@@ -19,9 +20,31 @@ public class FightManager : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        prompt.text = $"What will {player.GetCurrentPokemon().SpeciesName} do?";
-        playerPokemonNameText.text = player.GetCurrentPokemon().SpeciesName;
+        currentFightingPokemon = player.GetCurrentPokemon();
+        prompt.text = $"What will {currentFightingPokemon.SpeciesName} do?";
+        playerPokemonNameText.text = currentFightingPokemon.SpeciesName;
         enemyPokemonNameText.text = enemy.GetCurrentPokemon().SpeciesName;
+    }
+
+    private void ResetState()
+    {
+        playerHp.value = currentFightingPokemon.GetHp();
+        prompt.text = $"What will {currentFightingPokemon.SpeciesName} do?";
+        playerPokemonNameText.text = currentFightingPokemon.SpeciesName;
+        int i = 0;
+        foreach (TMP_Text text in panelAbilities.GetComponentsInChildren<TMP_Text>())
+        {
+            text.text = currentFightingPokemon.GetAbilities()[i].Name;
+            i++;
+        }
+        i = 0;
+        foreach (Button button in panelAbilities.GetComponentsInChildren<Button>())
+        {
+            button.onClick.RemoveAllListeners();
+            Ability temp = currentFightingPokemon.GetAbilities()[i];
+            button.onClick.AddListener(delegate { UseAbility(temp); });
+            i++;
+        }
     }
 
     // Update is called once per frame
@@ -42,7 +65,7 @@ public class FightManager : MonoBehaviour
         int i = 0;
         foreach(TMP_Text text in panelAbilities.GetComponentsInChildren<TMP_Text>())
         {
-            text.text = player.GetCurrentPokemon().GetAbilities()[i].Name;
+            text.text = currentFightingPokemon.GetAbilities()[i].Name;
             i++;
         }
         AddAbilities();
@@ -53,7 +76,7 @@ public class FightManager : MonoBehaviour
         int i = 0;
         foreach (Button button in panelAbilities.GetComponentsInChildren<Button>())
         {
-            Ability temp = player.GetCurrentPokemon().GetAbilities()[i];
+            Ability temp = currentFightingPokemon.GetAbilities()[i];
             button.onClick.AddListener(delegate { UseAbility(temp); });
             i++;
         }
@@ -74,12 +97,20 @@ public class FightManager : MonoBehaviour
             HandleEnd();
         }
         Ability ability = enemy.GetCurrentPokemon().GetAbilities()[Random.Range(0, 4)];
-        player.GetCurrentPokemon().TakeDamage(ability.Damage);
-        playerHp.value = player.GetCurrentPokemon().GetHp();
-        if (player.GetCurrentPokemon().GetHp() <= 0)
+        currentFightingPokemon.TakeDamage(ability.Damage);
+        playerHp.value = currentFightingPokemon.GetHp();
+        if (currentFightingPokemon.GetHp() <= 0)
         {
-            Destroy(player.gameObject);
-            HandleEnd();
+            currentFightingPokemon = player.GetNextPokemon();
+            if(currentFightingPokemon == null)
+            {
+                HandleEnd();
+            }
+            else
+            {
+                ResetState();
+            }
+            
         }
 
     }

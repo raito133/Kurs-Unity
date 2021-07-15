@@ -8,7 +8,7 @@ public class Enemy : Character
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        pokemons.Add(new Pokemon("Pikaczu", PokemonType.WATER, 80));
+        pokemons.Add(new Pokemon("Pikaczu", PokemonType.WATER, 5000));
         currentPokemon = pokemons[0];
     }
 
