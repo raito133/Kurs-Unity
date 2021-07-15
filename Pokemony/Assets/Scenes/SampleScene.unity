@@ -5535,6 +5535,7 @@ MonoBehaviour:
   promptText: {fileID: 870770000}
   panelAbilities: {fileID: 511043811}
   enemyHp: {fileID: 541038141}
+  playerHp: {fileID: 1993083322}
 --- !u!1 &1422579197
 GameObject:
   m_ObjectHideFlags: 0

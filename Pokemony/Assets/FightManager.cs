@@ -14,6 +14,7 @@ public class FightManager : MonoBehaviour
     [SerializeField] GameObject promptText;
     [SerializeField] GameObject panelAbilities;
     [SerializeField] Slider enemyHp;
+    [SerializeField] Slider playerHp;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,8 +63,30 @@ public class FightManager : MonoBehaviour
     {
         enemy.GetCurrentPokemon().TakeDamage(ability.Damage);
         enemyHp.value = enemy.GetCurrentPokemon().GetHp();
+        FightBack();
     }
 
+    public void FightBack()
+    {
+        if(enemy.GetCurrentPokemon().GetHp() <= 0)
+        {
+            Destroy(enemy.gameObject);
+            HandleEnd();
+        }
+        Ability ability = enemy.GetCurrentPokemon().GetAbilities()[Random.Range(0, 4)];
+        player.GetCurrentPokemon().TakeDamage(ability.Damage);
+        playerHp.value = player.GetCurrentPokemon().GetHp();
+        if (player.GetCurrentPokemon().GetHp() <= 0)
+        {
+            Destroy(player.gameObject);
+            HandleEnd();
+        }
+
+    }
+    private void HandleEnd()
+    {
+        this.gameObject.SetActive(false);
+    }
 
 
     public void Fight(Enemy enemy)
