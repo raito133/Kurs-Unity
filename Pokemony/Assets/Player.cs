@@ -15,12 +15,16 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
-        rigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal")*speed, 
-            Input.GetAxisRaw("Vertical")*speed);
-        if (Input.GetAxisRaw("Horizontal") == -1)
-            GetComponent<SpriteRenderer>().flipX = true;
-        else
-            GetComponent<SpriteRenderer>().flipX = false;
+        if(canMove)
+        {
+            rigidbody.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * speed,
+            Input.GetAxisRaw("Vertical") * speed);
+            if (Input.GetAxisRaw("Horizontal") == -1)
+                GetComponent<SpriteRenderer>().flipX = true;
+            else if (Input.GetAxisRaw("Horizontal") == 1)
+                GetComponent<SpriteRenderer>().flipX = false;
+        }
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Ability
 {
-    string name;
-    int damage;
-    int cost;
+    public string Name { get; }
+    public int Damage { get; }
+    public int Cost { get; }
     public Ability(string name, int damage, int cost)
     {
-        this.name = name;
-        this.damage = damage;
-        this.cost = cost;
+        this.Name = name;
+        this.Damage = damage;
+        this.Cost = cost;
     }
 }

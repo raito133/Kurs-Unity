@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected float speed = 5;
     protected List<Pokemon> pokemons = new List<Pokemon>();
     protected Pokemon currentPokemon;
+    protected bool canMove = true;
 
     public Pokemon GetCurrentPokemon()
     {

@@ -22,5 +22,23 @@ public class Pokemon
         this.type = type;
         this.hp = hp;
         this.abilities.Add(new Ability("Push", 20, 0));
+        this.abilities.Add(new Ability("Pull", 20, 0));
+        this.abilities.Add(new Ability("Zap", 20, 0));
+        this.abilities.Add(new Ability("Desttt", 20, 0));
+    }
+
+    public List<Ability> GetAbilities()
+    {
+        return abilities;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        hp -= damage;
+    }
+
+    public int GetHp()
+    {
+        return hp;
     }
 }
