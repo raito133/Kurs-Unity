@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class FightManager : MonoBehaviour
 {
+    Character first;
+    Character second;
     Player player;
     Pokemon currentFightingPokemon;
     Enemy enemy;
@@ -19,11 +21,22 @@ public class FightManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        first= (Character)GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         currentFightingPokemon = player.GetCurrentPokemon();
         prompt.text = $"What will {currentFightingPokemon.SpeciesName} do?";
         playerPokemonNameText.text = currentFightingPokemon.SpeciesName;
         enemyPokemonNameText.text = enemy.GetCurrentPokemon().SpeciesName;
+        for (int i = 0; i < 10; i++)
+        {
+            if (++i == 2)
+                break;
+            Debug.Log(i);
+        }
+        int[] nazwaTablicy = new int[] { 0, 1, 2 };
+        int[] aaa = nazwaTablicy;
+        aaa[0] = 2;
+        int b = nazwaTablicy[0];
+        Debug.Log(b);
     }
 
     private void ResetState()
@@ -110,7 +123,6 @@ public class FightManager : MonoBehaviour
             {
                 ResetState();
             }
-            
         }
 
     }
