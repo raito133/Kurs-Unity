@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] Canvas canvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,9 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void Fight()
+    public void Fight(Enemy enemy)
     {
-
+        canvas.gameObject.SetActive(true);
+        canvas.gameObject.GetComponent<FightManager>().Fight(enemy);
     }
 }

@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 103909729}
   - component: {fileID: 103909728}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Button Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -754,7 +754,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841829264
 GameObject:
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 841829267}
   - component: {fileID: 841829266}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Player Pokemon Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,7 +902,7 @@ GameObject:
   - component: {fileID: 870770003}
   - component: {fileID: 870770002}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Text Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1038,7 +1038,7 @@ GameObject:
   - component: {fileID: 874264576}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1106,7 +1106,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &874264575
 BoxCollider2D:
@@ -1146,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ab04d0b4e3e4a548b9c25ed31b2ad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &879876436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1186,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 559.5, y: -338.97}
+  m_AnchoredPosition: {x: 559.5, y: -338.96997}
   m_SizeDelta: {x: -1118.98, y: -677.92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879876438
@@ -1415,7 +1416,7 @@ GameObject:
   - component: {fileID: 922143416}
   - component: {fileID: 922143415}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Button Pokemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1670,7 +1671,7 @@ GameObject:
   - component: {fileID: 1015260461}
   - component: {fileID: 1015260460}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Button Run
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1739,7 +1740,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1015260461}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1387300416}
+        m_TargetAssemblyTypeName: FightManager, Assembly-CSharp
+        m_MethodName: OnRunButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1015260461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,7 +1968,7 @@ Transform:
   - {fileID: 1350689508}
   - {fileID: 171463381}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1314759473
 GameObject:
@@ -1992,7 +2005,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -400.51, y: -338.96}
+  m_AnchoredPosition: {x: -400.50995, y: -338.95996}
   m_SizeDelta: {x: -801.01, y: -677.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314759475
@@ -3517,9 +3530,10 @@ GameObject:
   - component: {fileID: 1387300414}
   - component: {fileID: 1387300413}
   - component: {fileID: 1387300412}
+  - component: {fileID: 1387300416}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: FightManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3601,14 +3615,30 @@ RectTransform:
   - {fileID: 1314759474}
   - {fileID: 1966946222}
   - {fileID: 881184004}
+  - {fileID: 1620088759}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1387300416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387300411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ecbc5596879b24db6ecdc36bb97a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prompt: {fileID: 870770002}
+  playerPokemonNameText: {fileID: 1422579199}
+  enemyPokemonNameText: {fileID: 1988191420}
 --- !u!1 &1422579197
 GameObject:
   m_ObjectHideFlags: 0
@@ -3621,7 +3651,7 @@ GameObject:
   - component: {fileID: 1422579200}
   - component: {fileID: 1422579199}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Player Pokemon Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3758,7 +3788,7 @@ GameObject:
   - component: {fileID: 1575628590}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3796,6 +3826,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39055c2aca6589646b100565ccf522fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
 --- !u!212 &1575628588
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3859,7 +3890,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1575628590
 BoxCollider2D:
@@ -3887,6 +3918,81 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1620088758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1620088759}
+  - component: {fileID: 1620088761}
+  - component: {fileID: 1620088760}
+  m_Layer: 5
+  m_Name: PlayerPokemon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1620088759
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620088758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1387300415}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -282, y: 53.27}
+  m_SizeDelta: {x: 190.26, y: 274.78}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1620088760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620088758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 8130407264197782721, guid: bd7804df9e46da642afdf37af1e8d69d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1620088761
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620088758}
+  m_CullTransparentMesh: 1
 --- !u!1 &1654329813
 GameObject:
   m_ObjectHideFlags: 0
@@ -3900,7 +4006,7 @@ GameObject:
   - component: {fileID: 1654329816}
   - component: {fileID: 1654329815}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Button Fight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4171,6 +4277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f2249a4717d6884a9adb4d6ec4d5d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1387300414}
 --- !u!4 &1943667398
 Transform:
   m_ObjectHideFlags: 0
@@ -4183,7 +4290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1966946221
 GameObject:
@@ -4274,7 +4381,7 @@ GameObject:
   - component: {fileID: 1988191421}
   - component: {fileID: 1988191420}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Enemy Pokemon Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
