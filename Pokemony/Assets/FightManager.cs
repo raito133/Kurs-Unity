@@ -41,7 +41,8 @@ public class FightManager : MonoBehaviour
         int i = 0;
         foreach(TMP_Text text in panelAbilities.GetComponentsInChildren<TMP_Text>())
         {
-            text.text = player.GetCurrentPokemon().GetAbilities()[i++].Name;
+            text.text = player.GetCurrentPokemon().GetAbilities()[i].Name;
+            i++;
         }
         AddAbilities();
     }
@@ -51,7 +52,9 @@ public class FightManager : MonoBehaviour
         int i = 0;
         foreach (Button button in panelAbilities.GetComponentsInChildren<Button>())
         {
-            button.onClick.AddListener(delegate { UseAbility(player.GetCurrentPokemon().GetAbilities()[i++]); });
+            Ability temp = player.GetCurrentPokemon().GetAbilities()[i];
+            button.onClick.AddListener(delegate { UseAbility(temp); });
+            i++;
         }
     }
 
